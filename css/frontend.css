@@ -52,8 +52,6 @@
 .wwa-login-form {
     max-width: 350px;
     margin: 0 auto;
-    padding: 20px;
-    padding-bottom: 40px;
 }
 .wwa-login-form form p, .wwa-login-form-webauthn p {
     margin-bottom: 0;
@@ -135,15 +133,14 @@
     line-height: 2.30769231;
     padding: 0 12px;
     vertical-align: baseline;
-    float: right;
     background: #007cba;
     border-color: #007cba;
     color: #fff;
     text-decoration: none;
     text-shadow: none;
+    align-items: center;
 }
 .wwa-login-form .button-primary, .wwa-login-form .button-secondary {
-    display: inline-block;
     text-decoration: none;
     font-size: 13px;
     line-height: 2.15384615;
@@ -157,7 +154,6 @@
     border-radius: 3px;
     white-space: nowrap;
     box-sizing: border-box;
-    margin-left: 5px;
 }
 .wwa-login-form .button-primary:focus, .wwa-login-form .button-primary:hover {
     background: #0071a1;
@@ -210,7 +206,7 @@
     pointer-events: none;
 }
 .wwa-login-form-webauthn {
-    margin-bottom: 30px;
+    margin-bottom: 0px;
 }
 .wwa-t2w {
     font-size: 14px;
@@ -257,4 +253,13 @@
         min-height: 40px;
         margin-bottom: 4px;
     }
+}
+.wwa-outer-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.wwa-inner-flex {
+    align-self: center;
+    margin: 10px 0px;
 }

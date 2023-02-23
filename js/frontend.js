@@ -177,7 +177,7 @@ function wwa_auth() {
         alert(wwa_php_vars.i18n_31);
         return;
     }
-    let wwa_username = this.parentNode.previousElementSibling.previousElementSibling.getElementsByClassName('wwa-user-name')[0].value;
+    let wwa_username = this.parentNode?.parentNode.previousElementSibling?.previousElementSibling?.getElementsByClassName('wwa-user-name')[0]?.value;
     if (wwa_username === '' && wwa_php_vars.usernameless !== 'true') {
         alert(wwa_php_vars.i18n_11);
         return;
@@ -185,11 +185,11 @@ function wwa_auth() {
     wwa_dom('wwa-user-name', (dom) => { dom.readOnly = true }, 'class');
     wwa_disable_buttons();
     let button_dom = this;
-    button_dom.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_3;
+    button_dom.parentNode.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_3;
     let request = wwa_ajax();
     request.get(wwa_php_vars.ajax_url, `?action=wwa_auth_start&user=${encodeURIComponent(wwa_username)}&type=auth`, (rawData, status) => {
         if (status) {
-            button_dom.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_4;
+            button_dom.parentNode.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_4;
             let data = rawData;
             try {
                 data = JSON.parse(rawData);
@@ -197,9 +197,9 @@ function wwa_auth() {
                 console.warn(rawData);
                 wwa_enable_buttons();
                 if (wwa_php_vars.usernameless === 'true' && wwa_username === '') {
-                    button_dom.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_7 + wwa_php_vars.i18n_33;
+                    button_dom.parentNode.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_7 + wwa_php_vars.i18n_33;
                 } else {
-                    button_dom.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_7;
+                    button_dom.parentNode.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_7;
                 }
                 wwa_dom('wwa-user-name', (dom) => { dom.readOnly = false }, 'class');
                 return;
@@ -218,7 +218,7 @@ function wwa_auth() {
             delete data.clientID;
 
             navigator.credentials.get({ 'publicKey': data }).then((credentialInfo) => {
-                button_dom.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_5;
+                button_dom.parentNode.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_5;
                 return credentialInfo;
             }).then((data) => {
                 const publicKeyCredential = {
@@ -240,7 +240,7 @@ function wwa_auth() {
                         if (data === 'true') {
                             wwa_enable_buttons();
                             wwa_dom('wwa-user-name', (dom) => { dom.readOnly = false }, 'class');
-                            button_dom.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_6;
+                            button_dom.parentNode.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_6;
                             if (document.querySelectorAll('p.login-submit input[name="redirect_to"]').length > 0) {
                                 setTimeout(() => {
                                     window.location.href = document.querySelectorAll('p.login-submit input[name="redirect_to"]')[0].value;
@@ -259,18 +259,18 @@ function wwa_auth() {
                         } else {
                             wwa_enable_buttons();
                             if (wwa_php_vars.usernameless === 'true' && wwa_username === '') {
-                                button_dom.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_7 + wwa_php_vars.i18n_33;
+                                button_dom.parentNode.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_7 + wwa_php_vars.i18n_33;
                             } else {
-                                button_dom.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_7;
+                                button_dom.parentNode.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_7;
                             }
                             wwa_dom('wwa-user-name', (dom) => { dom.readOnly = false }, 'class');
                         }
                     } else {
                         wwa_enable_buttons();
                         if (wwa_php_vars.usernameless === 'true' && wwa_username === '') {
-                            button_dom.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_7 + wwa_php_vars.i18n_33;
+                            button_dom.parentNode.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_7 + wwa_php_vars.i18n_33;
                         } else {
-                            button_dom.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_7;
+                            button_dom.parentNode.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_7;
                         }
                         wwa_dom('wwa-user-name', (dom) => { dom.readOnly = false }, 'class');
                     }
@@ -279,18 +279,18 @@ function wwa_auth() {
                 console.warn(error);
                 wwa_enable_buttons();
                 if (wwa_php_vars.usernameless === 'true' && wwa_username === '') {
-                    button_dom.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_7 + wwa_php_vars.i18n_33;
+                    button_dom.parentNode.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_7 + wwa_php_vars.i18n_33;
                 } else {
-                    button_dom.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_7;
+                    button_dom.parentNode.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_7;
                 }
                 wwa_dom('wwa-user-name', (dom) => { dom.readOnly = false }, 'class');
             })
         } else {
             wwa_enable_buttons();
             if (wwa_php_vars.usernameless === 'true' && wwa_username === '') {
-                button_dom.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_7 + wwa_php_vars.i18n_33;
+                button_dom.parentNode.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_7 + wwa_php_vars.i18n_33;
             } else {
-                button_dom.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_7;
+                button_dom.parentNode.parentNode.previousElementSibling.innerHTML = wwa_php_vars.i18n_7;
             }
             wwa_dom('wwa-user-name', (dom) => { dom.readOnly = false }, 'class');
         }
